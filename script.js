@@ -26,78 +26,124 @@ function getPlayerChoice(){
 function playRound(playerSelection, computerSelection){
 
     if(playerSelection == computerSelection){
-        return "It's a Tie!"
+        score.textContent = "It's a Tie!";
     }  
     
     else if(playerSelection == "r" && computerSelection == "p"){
-        return "You Lost This Round ):"
+        score.textContent = "You Lost This Round ):";
     }
   
     else if(playerSelection == "r" && computerSelection == "s"){
-        return "You Won This Round!!"
+        score.textContent = "You Won This Round!!";
     }
 
     else if(playerSelection == "s" && computerSelection == "p"){
-        return "You Won This Round!!"
+        score.textContent = "You Won This Round!!";
     }
 
     else if(playerSelection == "s" && computerSelection == "r"){
-        return "You Lost This Round ):"
+        score.textContent = "You Lost This Round ):";
     }
 
     else if(playerSelection == "p" && computerSelection == "s"){
-        return "You Lost This Round ):"
+        score.textContent = "You Lost This Round ):";
     }
 
     else if(playerSelection == "p" && computerSelection == "r") {
-        return "You Won This Round!!"
+        score.textContent = "You Won This Round!!";
     }
+    result.appendChild(score);
 }
 
-function playGame(){
+    const result = document.querySelector('.result');
+    const score = document.createElement('p');
 
-    let playerWins = 0;
-    let computerWins = 0;
-    let draws = 0;
+    
 
-    for(let i = 1; i <= 5; i++){
 
-        let comChoice = getComputerChoice();
-        let playerChoice = getPlayerChoice();
-        winner = playRound(playerChoice, comChoice);
 
-        if (winner == "You Won This Round!!"){
-            playerWins += 1;
-        }
-        else if (winner == "You Lost This Round ):"){
-            computerWins += 1;
-        }
-        else{
-            draws += 1;
-        }
+    const btns = document.querySelectorAll('.btn');
 
-        console.log(winner)
+    btns.forEach(btn => btn.addEventListener('click', () => {
+        playRound(btn.id, getComputerChoice())
+    }));
 
-        console.log("Player Wins = " + playerWins)
-        console.log("Computer Wins = " + computerWins)
-        console.log("Draws = " + draws)
-        console.log(" ")
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function playGame(){
+
+//     let playerWins = 0;
+//     let computerWins = 0;
+//     let draws = 0;
+
+//     for(let i = 1; i <= 5; i++){
+
+//         let comChoice = getComputerChoice();
+//         let playerChoice = getPlayerChoice();
+//         winner = playRound(playerChoice, comChoice);
+
+//         if (winner == "You Won This Round!!"){
+//             playerWins += 1;
+//         }
+//         else if (winner == "You Lost This Round ):"){
+//             computerWins += 1;
+//         }
+//         else{
+//             draws += 1;
+//         }
+
+//         console.log(winner)
+
+//         console.log("Player Wins = " + playerWins)
+//         console.log("Computer Wins = " + computerWins)
+//         console.log("Draws = " + draws)
+//         console.log(" ")
 
        
-    }
+//     }
 
-    if(playerWins > computerWins){
-        console.log("YOU WON THE 5 ROUND MATCH!!!!")
-    }
-    else if(playerWins < computerWins){
-        console.log("You lost the 5 round match ):")
-    }
-    else{
-        console.log("You Tied")
-    }
+//     if(playerWins > computerWins){
+//         console.log("YOU WON THE 5 ROUND MATCH!!!!")
+//     }
+//     else if(playerWins < computerWins){
+//         console.log("You lost the 5 round match ):")
+//     }
+//     else{
+//         console.log("You Tied")
+//     }
 
-}
+// }
 
 
-playGame();
+//playGame();
 
