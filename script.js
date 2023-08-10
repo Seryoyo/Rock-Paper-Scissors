@@ -25,49 +25,90 @@ function getPlayerChoice(){
 
 function playRound(playerSelection, computerSelection){
 
+    if(wins > 3){
+        const won = document.createElement('h1');
+        scoreboard.textContent = "wins: " + "5" + " losses: " + losses;
+        won.textContent = "YOU WON YIPPEEE!!!!!";
+        winner.appendChild(won);
+        
+        
+        return;
+    }
+    else if(losses > 3){
+        const lost =document.createElement('h1');
+        scoreboard.textContent = "wins: " + wins + " losses: " + "5";
+        lost.textContent= "You lost NOOOOOOOOOOOO!!!!";
+        winner.appendChild(lost);
+        
+        return;
+    }
+
     if(playerSelection == computerSelection){
-        score.textContent = "It's a Tie!";
+        gameResult.textContent = "It's a Tie!";
     }  
     
     else if(playerSelection == "r" && computerSelection == "p"){
-        score.textContent = "You Lost This Round ):";
+        gameResult.textContent = "You Lost This Round ):";
+        losses += 1;
     }
   
     else if(playerSelection == "r" && computerSelection == "s"){
-        score.textContent = "You Won This Round!!";
+        gameResult.textContent = "You Won This Round!!";
+        wins += 1;
     }
 
     else if(playerSelection == "s" && computerSelection == "p"){
-        score.textContent = "You Won This Round!!";
+        gameResult.textContent = "You Won This Round!!";
+        wins += 1;
     }
 
     else if(playerSelection == "s" && computerSelection == "r"){
-        score.textContent = "You Lost This Round ):";
+        gameResult.textContent = "You Lost This Round ):";
+        losses += 1;
     }
 
     else if(playerSelection == "p" && computerSelection == "s"){
-        score.textContent = "You Lost This Round ):";
+        gameResult.textContent = "You Lost This Round ):";
+        losses += 1;
     }
 
     else if(playerSelection == "p" && computerSelection == "r") {
-        score.textContent = "You Won This Round!!";
+        gameResult.textContent = "You Won This Round!!";
+        wins += 1;
     }
-    result.appendChild(score);
+    result.appendChild(gameResult);
+    scoreboard.textContent = "wins: " + wins + " losses: " + losses;
+
+
+
+    
 }
 
     const result = document.querySelector('.result');
-    const score = document.createElement('p');
+    const gameResult = document.createElement('p');
+    const scoreText = document.createElement('p');
+    const scoreboard= document.querySelector('.scoreboard');
+    const winner = document.querySelector('.winner');
+    
+    let wins = 0;
+    let losses = 0;
 
     
 
-
+        
 
     const btns = document.querySelectorAll('.btn');
 
     btns.forEach(btn => btn.addEventListener('click', () => {
         playRound(btn.id, getComputerChoice())
-    }));
+        }));
 
+ 
+
+
+
+    
+    
     
     
     
